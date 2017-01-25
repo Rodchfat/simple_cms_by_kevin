@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-   root 'demo#index'
+  root 'demo#index'
+  resources :subjects do 
+    member do 
+      get :delete
+    end
+  end
+  
+  resources :pages
+  resources :sections
+
+   
    get 'demo/hello'
 
   # The priority is based upon order of creation: first created -> highest priority.
