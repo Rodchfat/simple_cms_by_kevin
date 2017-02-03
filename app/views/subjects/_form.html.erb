@@ -1,0 +1,30 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="subjects new">
+  <h2>Create Subject</h2>
+
+  <%= form_for(@subject) do |f| %>
+<%= error_messages_for(f.object) %>
+    <table summary="Subject form fields">
+  <tr>
+    <th><%= f.label(:name, "Name") %></th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:position) %></th>
+    <td><%= f.select(:position, 1..@subject_count) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:visible) %></th>
+    <td><%= f.check_box(:visible) %></td>
+  </tr>
+  <tr>
+  <div class = "form-button">
+      <%= f.submit "Submit" %>
+  </div>
+  </tr>
+  
+  </table>
+<% end %>  
+
+</div>  <!---->

@@ -1,0 +1,35 @@
+
+<div class="pages index">
+ <h2>pages </h2></br>
+ <%= @count %>
+ 
+
+  <%= link_to "Add New page", new_page_path %>
+  
+
+  <div><%= pluralize(@pages.size, 'page') %> found</div>
+  <table class="listing" summary="page list">
+    <tr class="header">
+      <th>Position </th>
+      <th>page</th>
+      <th>Visible</th>
+      <th>Permalink</th>
+      <th>Actions</th>
+    </tr>
+    <% @pages.each do |page| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= page.position %></td>
+      <td><%= page.name %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td class="center"><%=  page.permalink %></td>
+      <td class="actions">
+        <%= link_to("View Pages", {:controller => 'pages', :page_id => page.id}, :class => 'action show') %>
+        <%= link_to("Show", page_path(page), :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => page.id}, :class => 'action edit') %>
+        <%= link_to("Delete", delete_page_path(page), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  
+</div>
