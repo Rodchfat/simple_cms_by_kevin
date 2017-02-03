@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :admin_users do 
+    member do 
+      get 'delete'
+    end
+  end
+  
+
   root 'demo#index'
   
   get 'admin', :to => 'access#menu'
@@ -9,16 +16,9 @@ Rails.application.routes.draw do
   get 'access/logout'
 
   
-  
-  
-  
-  
-
-  
   resources :subjects do 
     member do 
       get 'delete'
-      get 'count'
     end
   end
   

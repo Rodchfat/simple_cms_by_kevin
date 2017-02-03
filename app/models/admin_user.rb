@@ -17,6 +17,10 @@ class AdminUser < ActiveRecord::Base
                       :format => EMAIL_REGEX,
                       :confirmation => true
 
+    def first_and_last
+        "#{first_name} #{last_name}"
+    end
+     scope :sorted, -> {order('first_name ASC, last_name ASC')}
     
     
     private 
@@ -26,10 +30,6 @@ class AdminUser < ActiveRecord::Base
         end
     end
     
-    def admin_user_first_and_last
-        p "#{AdminUser.first_name} + "" + #{AdminUser.last_name}"
-    end
-     scope :sorted, -> {first_name.order("position ASC") || last_name.order("position ASC")}
     
     
     
